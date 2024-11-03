@@ -1,0 +1,17 @@
+body {
+    user-select: none;
+    overflow: hidden;
+}
+
+#timer-container {
+    background: black;
+    color: white;
+    opacity: 0.6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    padding: 20px;
+    width: min-content;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
