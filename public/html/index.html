@@ -10,11 +10,15 @@
   <body>
 
     <div id="timer-container">
-      00:00:00
+      <span class="timeSlot" id="hours">00:00:00.0</span>
+      <span class="timeSlot" id="minutes"></span>
+      <span class="timeSlot" id="seconds"></span>
+      <span class="timeSlot" id="tenthSeconds"></span>
     </div>
 
     <!-- You can also require other files to run in this process -->
     <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/timer.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../../renderer.js"></script>
   </body>

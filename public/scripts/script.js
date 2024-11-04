@@ -1,9 +1,3 @@
-let biteSound = new Audio('../assets/sounds/bite.mp3')
-
-$(document).ready(()=>{
-    
-})
-
 let isDragging = false
 let offset = { x: 0, y: 0 }
 
@@ -15,7 +9,7 @@ $('#timer-container')
         $(this).css('cursor', 'grabbing')
     })
     .on('mousemove', function(e) {
-        if (isDragging) {
+        if(isDragging){
             $(this).css({
                 left: e.clientX - offset.x + 'px',
                 top: e.clientY - offset.y + 'px',
@@ -23,7 +17,6 @@ $('#timer-container')
         }
     })
     .on('mouseup mouseleave', function() {
-        console.log($('#timer-container').position())
         isDragging = false
-        $(this).css('cursor', 'move')
+        $(this).css('cursor', 'grab')
     })

@@ -2,12 +2,17 @@ import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
 import { fileURLToPath } from 'url'
 import {GlobalKeyboardListener} from 'node-global-key-listener'
-import { spawn } from 'child_process'
-import processWindows from 'node-process-windows'
-const v = new GlobalKeyboardListener()
+const keyboardListener = new GlobalKeyboardListener()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+keyboardListener.addListener(function (key, down) {
+  if(key.scanCode == 57 && down.SPACE){
+      console.log('space pressed')
+      mainWindow.webContents.send('split')
+  }
+})
 
 let mainWindow;
 
