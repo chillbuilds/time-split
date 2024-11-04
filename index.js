@@ -7,13 +7,6 @@ const keyboardListener = new GlobalKeyboardListener()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-keyboardListener.addListener(function (key, down) {
-  if(key.scanCode == 57 && down.SPACE){
-      console.log('space pressed')
-      mainWindow.webContents.send('split')
-  }
-})
-
 let mainWindow;
 
 function createWindow () {
@@ -34,7 +27,7 @@ function createWindow () {
   mainWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true })
   mainWindow.setAlwaysOnTop(true, 'screen-saver', 1)
   mainWindow.setIgnoreMouseEvents(true, { forward: true })
-  mainWindow.setFocusable(false)
+  mainWindow.setFocusable(true)
   mainWindow.maximize()
 
   // Open the DevTools.
@@ -64,4 +57,19 @@ ipcMain.on('toMain', (event, data) => {
     mainWindow.setIgnoreMouseEvents(true, { forward: true })
   }
   console.log(data)
+})
+
+keyboardListener.addListener(function (key, down) {
+  if(down.COMMA){
+    console.log('opacity--')
+    mainWindow.webContents.send('opacityMinus')
+  }
+  if(down.DOT){
+    console.log('opacity++')
+    mainWindow.webContents.send('opacityPlus')
+  }
+  if(down.SPACE){
+    console.log('space pressed')
+    mainWindow.webContents.send('split')
+  }
 })

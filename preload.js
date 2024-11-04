@@ -18,5 +18,7 @@ contextBridge.exposeInMainWorld('electron', {
     receive: (channel, func) => {
       ipcRenderer.on(channel, (event, ...args) => func(...args))
     },
-    onSplit: (callback) => ipcRenderer.on('split', (event, data) => callback(data))
+    onSplit: (callback) => ipcRenderer.on('split', (event, data) => callback(data)),
+    lowerOpacity: (callback) => ipcRenderer.on('opacityMinus', (event, data) => callback(data)),
+    raiseOpacity: (callback) => ipcRenderer.on('opacityPlus', (event, data) => callback(data))
 })

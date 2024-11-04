@@ -38,6 +38,23 @@ $(document).ready(()=>{
     }, 10)
 })
 
+window.electron.lowerOpacity(() => {
+    let timerOpacity = $('#timer-container').css('opacity')
+    if(timerOpacity > 0.1){
+        timerOpacity = timerOpacity - 0.1
+        $('#timer-container').css('opacity', timerOpacity)
+    }
+})
+
+window.electron.raiseOpacity(() => {
+    let timerOpacity = $('#timer-container').css('opacity')
+    if(timerOpacity < 1){
+        timerOpacity = parseFloat(timerOpacity) + 0.1
+        console.log(timerOpacity)
+        $('#timer-container').css('opacity', timerOpacity)
+    }
+})
+
 window.electron.onSplit(() => {
 
     if(!timing){
